@@ -1,29 +1,55 @@
-# Operations KPI Dashboard for a Fulfillment Center
+# Operations KPI
+## Operational analytics using freight and traffic data
 
-## Overview
+### Overview
+This project builds a real operations KPI layer on container throughput data from the Port of Los Angeles.   Instead of using curated retail datasets, 
+this project works with publicly available port throughput statistics to analyze supply-chain operations, congestion, and volume trends in a real logistical hub.
 
-This project builds a small data warehouse and KPI layer for a retail / e-commerce operation using the Sample Superstore dataset. The goal is to design a star schema, write SQL to calculate core operational KPIs, and connect those tables to a Power BI dashboard.
+The emphasis is on:
+- Data modeling
+- SQL-driven KPI computation
+- Imperfect operational data
+- Decision-ready metrics
+- Visualization in Power BI
+  
+### Business Problem
 
-## Data Source
+### Data Source
+Port of Los Angeles – TEU Container Counts
+Monthly and cumulative TEU (Twenty-Foot Equivalent Unit) figures for container throughput at the Port of Los Angeles. 
 
-- **Dataset:** Tableau Sample Superstore (Excel)
-- **Fields include:** Order Date, Ship Date, Ship Mode, Region, Category, Sales, Profit, Quantity, etc.
+Key characteristics of the dataset:
+- TEU counts by month and calendar/YTD totals
+- Imported, exported, and empty container splits
+- Annual historic TEU statistics available
+- Publicly accessible CSV/JSON options for download
 
-The raw dataset is stored locally in `data/raw/` and not committed to this repository.
+### Approach
+- Data retrieval
+- Data ingestion
+- Schema design
+- KPI computations
+- Visualization
+### Project Structure
+sql/
+  
+  ddl/        → schema and table creation
+  
+  staging/    → raw data ingestion logic
+  
+  kpis/       → KPI and trend queries
 
-## Planned Deliverables
+reports/
+  
+  erd/        → schema diagrams
+  
+  insights/   → written observations and trends
 
-- Star schema with:
-  - `fact_orders`
-  - `dim_date`, `dim_customer`, `dim_product`, `dim_region`, `dim_ship_mode`
-- SQL queries for:
-  - Throughput
-  - Backlog / open orders
-  - Processing time (order → ship)
-  - Inventory / category-level KPIs
-  - 7-day rolling KPIs using window functions
-- Power BI dashboard visuals:
-  - Warehouse/region throughput
-  - Delay/processing-time distributions
-  - Regional performance maps
-- Written insights summary for operations stakeholders.
+powerbi/
+  
+  dashboards/ → visual dashboards and screenshots
+
+### Insights
+
+### Current Status
+
